@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.body-container-signup {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
+}
+
+.front {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+    background-color: #0033A0;
+    align-items: center;
+}
+
+.front-title h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 42px;
+}
+
+.front-FooterUser p {
+    text-align: center;
+    color: white;
+}
+
+.front-FooterUser a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.front-FooterUser a:hover {
+    color: whitesmoke;
+}
+
+.sign-up {
+    width: 50%;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sign-up-title {
+    width: 700px;
+    text-align: center;
+}
+
+.sign-up-title h1{
+    font-size: 42px;
+}
+
+.sign-up-form{
+    width: 500px;
+}
+
+.sign-up-btn{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sign-up-btn button{
+    background-color: #008ECC;
+    color: #fff;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    width: 239px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sign-up-btn button:hover{
+    background-color: #026894;
+}
+
+.sign-up-FooterUser p {
+    text-align: center;
+    color: #333;
+}
+
+.sign-up-FooterUser a {
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+
+.sign-up-FooterUser a:hover {
+    color: #000;
+}
+
+.box-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.final-btn a{
+    display: none;
+}
+
+/* For Login Modal */
+.login-modal{
+    padding: 10px 30px 0 30px;
+    background-color: #FFFFF0;
+}
+
+.login-modal-title h1{
+    text-align: center;
+}
+
+.login-modal-body p{
+    text-align: center;
+}
+
+.login-modal-body a{
+    text-decoration: none;
+    color: #333;
+}
+
+.login-modal-body a:hover{
+    color: #000;
+}
+
+.login-modal-button{
+    text-align: center;
+    padding-top: 10px;
+}
+
+.login-modal-button button{
+    background-color: #28A745;
+    border: none;
+    width: 165px;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Quicksand', sans-serif;
+    cursor: pointer;
+}
+
+.login-modal-button button:hover{
+    background-color: #1c7732;
+}
+
+/* FOR MOBILE AND TABLET VIEW */
+@media (min-width: 480px) and (max-width: 768px) {
+    .front {
+        display: none;
+    }
+
+    .sign-up-title {
+        justify-content: center;
+        display: flex;
+    }
+
+    .sign-up-title h1 {
+        font-size: 26px;
+        width: 400px;
+    }
+
+    .sign-up {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .box-form{
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 30px;
+    }
+
+    .final-btn a{
+        text-decoration: none;
+        color: #333;
+        display: contents;
+    }
+
+    .final-btn a:hover{
+        color: #0D52BD;
+    }
+}

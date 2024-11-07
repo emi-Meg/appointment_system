@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "name": "Noreen Darunday",
+        "username": "dev.nor",
+        "email": "nor@test.com",
+        "contact": "09781234567",
+        "address": "Corella, Bohol"
+    },
+    {
+        "id": 2,
+        "name": "Jasper Villanueva",
+        "username": "jasper.v",
+        "email": "jasper@test.com",
+        "contact": "09876543210",
+        "address": "Tagbilaran City, Bohol"
+    },
+    {
+        "id": 3,
+        "name": "Maya Santos",
+        "username": "maya.s",
+        "email": "maya@test.com",
+        "contact": "09123456789",
+        "address": "Carmen, Bohol"
+    },
+    {
+        "id": 4,
+        "name": "Rafael Lopez",
+        "username": "rafael.l",
+        "email": "rafael@test.com",
+        "contact": "09234567890",
+        "address": "Danao, Bohol"
+    },
+    {
+        "id": 5,
+        "name": "Elena Cruz",
+        "username": "elena.c",
+        "email": "elena@test.com",
+        "contact": "09345678901",
+        "address": "Loon, Bohol"
+    },
+    {
+        "id": 6,
+        "name": "Samuel Reyes",
+        "username": "samuel.r",
+        "email": "samuel@test.com",
+        "contact": "09456789012",
+        "address": "Anda, Bohol"
+    },
+    {
+        "id": 7,
+        "name": "Ava Martinez",
+        "username": "ava.m",
+        "email": "ava@test.com",
+        "contact": "09567890123",
+        "address": "Panglao, Bohol"
+    },
+    {
+        "id": 8,
+        "name": "Liam Bautista",
+        "username": "liam.b",
+        "email": "liam@test.com",
+        "contact": "09678901234",
+        "address": "Balilihan, Bohol"
+    },
+    {
+        "id": 9,
+        "name": "Sophia Lim",
+        "username": "sophia.l",
+        "email": "sophia@test.com",
+        "contact": "09789012345",
+        "address": "Sierra Bullones, Bohol"
+    },
+    {
+        "id": 10,
+        "name": "Lucas Dela Cruz",
+        "username": "lucas.dc",
+        "email": "lucas@test.com",
+        "contact": "09890123456",
+        "address": "Catigbian, Bohol"
+    }
+]

@@ -1,0 +1,623 @@
+import React from "react";
+import Box from "@mui/material/Box";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import Divider from "@mui/material/Divider";
+import MenuItem from "@mui/material/MenuItem";
+import Drawer from "@mui/material/Drawer";
+import MenuIcon from "@mui/icons-material/Menu";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import {
+  InputLabel,
+  Menu,
+  Stack,
+  styled,
+  TextField,
+  Typography,
+  Link as MUILink,
+} from "@mui/material";
+import { Link as RouterLink, Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import smct from "../../Assets/Images/smct_group.png";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TwitterIcon from "@mui/icons-material/X";
+import { NavLink } from "react-router-dom";
+
+const StyledToolbar = styled(Toolbar)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  flexShrink: 0,
+  backdropFilter: "blur(24px)",
+  border: "1px solid",
+  borderColor: theme.palette.divider,
+  backgroundColor: "#0033A0",
+  boxShadow: theme.shadows[1],
+  padding: "20px 24px",
+}));
+
+function Copyright() {
+  return (
+    <Typography variant="body2" sx={{ color: "text.secondary", mt: 1 }}>
+      {"Copyright © "}
+      <MUILink color="text.secondary" href="https://mui.com/">
+        SMCT Group of Companies
+      </MUILink>
+      &nbsp;
+      {new Date().getFullYear()}
+    </Typography>
+  );
+}
+
+const UserLayout: React.FC = () => {
+  const [open, setOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const openSettings = Boolean(anchorEl);
+  const navigate = useNavigate();
+
+  const navItems = [
+    { path: "home", label: "Home" },
+    { path: "aboutservices", label: "About/Services" },
+    { path: "mybookings", label: "My Bookings" },
+    { path: "support", label: "Support" },
+  ];
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post("/api/logout");
+      console.log(response.data.message);
+      localStorage.removeItem("token");
+      navigate("/signin");
+    } catch (error) {
+      console.error("Logout error: ", error);
+    }
+  };
+
+  return (
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          width: "100%",
+          boxShadow: 0,
+          bgcolor: "transparent",
+          backgroundImage: "none",
+        }}
+      >
+        <Box
+          sx={{
+            width: "100%",
+            margin: "0 auto",
+          }}
+        >
+          <StyledToolbar variant="dense" disableGutters>
+            <Box
+              sx={{ flexGrow: 1, display: "flex", alignItems: "center", px: 0 }}
+            >
+              <Box
+                sx={{
+                  display: { xs: "none", md: "flex" },
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  paddingLeft: "20px",
+                  gap: { md: 5, lg: 40, xl: 80 },
+                }}
+              >
+                <div>
+                  <Typography>
+                    Hello, Noreen <br />
+                    <strong>Manage Your Appointments</strong>
+                  </Typography>
+                </div>
+                {/* <div>
+                  <RouterLink to="home">
+                    <Button
+                      variant="text"
+                      sx={{ color: "white", marginRight: "20px" }}
+                    >
+                      Home
+                    </Button>
+                  </RouterLink>
+                  <RouterLink to="aboutservices">
+                    <Button
+                      variant="text"
+                      sx={{ color: "white", marginRight: "20px" }}
+                    >
+                      About/Services
+                    </Button>
+                  </RouterLink>
+                  <RouterLink to="mybookings">
+                    <Button
+                      variant="text"
+                      sx={{ color: "white", marginRight: "20px" }}
+                    >
+                      My Bookings
+                    </Button>
+                  </RouterLink>
+                  <RouterLink to="support">
+                    <Button
+                      variant="text"
+                      sx={{ color: "white", marginRight: "20px" }}
+                    >
+                      Support
+                    </Button>
+                  </RouterLink>
+                  <Button
+                    variant="text"
+                    sx={{ minWidth: 0, color: "white", marginRight: "20px" }}
+                    id="basic-button"
+                    aria-controls={open ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                  >
+                    Settings
+                  </Button>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={openSettings}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <RouterLink to="profile">
+                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    </RouterLink>
+                    <MenuItem onClick={handleClose}>Notifications</MenuItem>
+                    <Divider/>
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  </Menu>
+                </div> */}
+                <div>
+                  {navItems.map((item) => (
+                    <NavLink
+                      key={item.path}
+                      to={item.path}
+                      style={({ isActive }) => ({
+                        color: isActive ? "#FFD700" : "white",
+                        marginRight: "20px"
+                      })}
+                    >
+                      <Button variant="text" sx={{ color: "inherit" }}>
+                        {item.label}
+                      </Button>
+                    </NavLink>
+                  ))}
+                  <Button
+                    variant="text"
+                    sx={{ minWidth: 0, color: "white", marginRight: "20px" }}
+                    id="basic-button"
+                    aria-controls={open ? "basic-menu" : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={handleClick}
+                  >
+                    Settings
+                  </Button>
+                  <Menu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={openSettings}
+                    onClose={handleClose}
+                    MenuListProps={{
+                      "aria-labelledby": "basic-button",
+                    }}
+                  >
+                    <RouterLink to="profile">
+                      <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    </RouterLink>
+                    <MenuItem onClick={handleClose}>Notifications</MenuItem>
+                    <Divider />
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  </Menu>
+                </div>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                display: { sm: "flex", md: "none" },
+              }}
+            >
+              <div>
+                <div className="flex flex-row sm:gap-80 gap-10 justify-between">
+                  <div>
+                    <Typography>
+                      Hello, Noreen <br />
+                      <strong>Manage Your Appointments</strong>
+                    </Typography>
+                  </div>
+                  <div>
+                    <IconButton
+                      aria-label="Menu button"
+                      onClick={toggleDrawer(true)}
+                    >
+                      <MenuIcon sx={{ color: "white" }} />
+                    </IconButton>
+                  </div>
+                </div>
+                <Drawer
+                  anchor="right"
+                  open={open}
+                  onClose={toggleDrawer(false)}
+                >
+                  <Box sx={{ p: 2, backgroundColor: "background.default" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <IconButton onClick={toggleDrawer(false)}>
+                        <CloseRoundedIcon />
+                      </IconButton>
+                    </Box>
+                    <Divider sx={{ my: 3 }} />
+                    <RouterLink to="home">
+                      <MenuItem>Home</MenuItem>
+                    </RouterLink>
+                    <RouterLink to="aboutservices">
+                      <MenuItem>About/Services</MenuItem>
+                    </RouterLink>
+                    <RouterLink to="mybookings">
+                      <MenuItem>My Bookings</MenuItem>
+                    </RouterLink>
+                    <RouterLink to="support">
+                      <MenuItem>Support</MenuItem>
+                    </RouterLink>
+                    <MenuItem
+                      component="button"
+                      onClick={(event) =>
+                        handleClick(
+                          event as React.MouseEvent<HTMLButtonElement>
+                        )
+                      }
+                    >
+                      Settings
+                    </MenuItem>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={openSettings}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                    >
+                      <RouterLink to="profile">
+                        <MenuItem onClick={handleClose}>Profile</MenuItem>
+                      </RouterLink>
+                      <MenuItem onClick={handleClose}>Notifications</MenuItem>
+                      <Divider />
+                      <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                    </Menu>
+                  </Box>
+                </Drawer>
+              </div>
+            </Box>
+          </StyledToolbar>
+        </Box>
+      </AppBar>
+      <div>
+        <Outlet />
+      </div>
+      <div>
+        <Divider
+          sx={{
+            marginTop: "200px",
+          }}
+        />
+        <Box
+          sx={{
+            width: "100%",
+            bgcolor: "#0033A0",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: { xs: 4, sm: 8 },
+            py: { xs: 5, sm: 6 },
+            textAlign: { sm: "center", md: "left" },
+            px: { xs: 8, sm: 3, lg: 8 },
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              width: "100%",
+              justifyContent: "space-between",
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 4,
+                minWidth: { xs: "100%", sm: "60%" },
+              }}
+            >
+              <Box sx={{ width: { xs: "100%", sm: "60%" } }}>
+                <img src={smct} alt="Logo" style={{ width: "200px" }} />
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  sx={{ fontWeight: 600, mt: 2, color: "white" }}
+                >
+                  Join the newsletter
+                </Typography>
+                <Typography variant="body2" sx={{ color: "white", mb: 2 }}>
+                  Subscribe for weekly updates. No spams ever!
+                </Typography>
+                <InputLabel htmlFor="email-newsletter" sx={{ color: "white" }}>
+                  Email
+                </InputLabel>
+                <Stack direction="row" spacing={1} useFlexGap>
+                  <TextField
+                    id="email-newsletter"
+                    hiddenLabel
+                    size="small"
+                    variant="outlined"
+                    fullWidth
+                    aria-label="Enter your email address"
+                    placeholder="Your email address"
+                    slotProps={{
+                      htmlInput: {
+                        autoComplete: "off",
+                        "aria-label": "Enter your email address",
+                      },
+                    }}
+                    sx={{
+                      width: "250px",
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: "white",
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "white",
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "white",
+                        },
+                      },
+                      "& .MuiInputLabel-root": {
+                        color: "white",
+                      },
+                      "& .MuiInputLabel-root.Mui-focused": {
+                        color: "white",
+                      },
+                      "& .MuiInputBase-input::placeholder": {
+                        color: "white",
+                        opacity: 1,
+                      },
+                    }}
+                  />
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    sx={{ flexShrink: 0, backgroundColor: "#FF6600" }}
+                  >
+                    Subscribe
+                  </Button>
+                </Stack>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "none", sm: "flex" },
+                flexDirection: "column",
+                gap: 1,
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{ fontWeight: "bold", color: "white" }}
+              >
+                Product
+              </Typography>
+              <MUILink variant="body2" href="#" sx={{ color: "white" }}>
+                Features
+              </MUILink>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                Testimonials
+              </MUILink>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                Highlights
+              </MUILink>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                Pricing
+              </MUILink>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                FAQs
+              </MUILink>
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "none", sm: "flex" },
+                flexDirection: "column",
+                gap: 1,
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{ fontWeight: "bold", color: "white" }}
+              >
+                Company
+              </Typography>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                About us
+              </MUILink>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                Careers
+              </MUILink>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                Press
+              </MUILink>
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "none", sm: "flex" },
+                flexDirection: "column",
+                gap: 1,
+              }}
+            >
+              <Typography
+                variant="body2"
+                sx={{ fontWeight: "bold", color: "white" }}
+              >
+                Legal
+              </Typography>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                Terms
+              </MUILink>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                Privacy
+              </MUILink>
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="#"
+                sx={{ color: "white" }}
+              >
+                Contact
+              </MUILink>
+            </Box>
+          </Box>
+        </Box>
+        <Divider />
+        <Box
+          sx={{
+            width: "100%",
+            bgcolor: "#F5F5F5",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: { xs: 4, sm: 8 },
+            py: { xs: 8, sm: 10 },
+            textAlign: { sm: "center", md: "left" },
+            px: "100px",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            <div>
+              <MUILink color="text.secondary" variant="body2" href="#">
+                Privacy Policy
+              </MUILink>
+              <Typography sx={{ display: "inline", mx: 0.5, opacity: 0.5 }}>
+                &nbsp;•&nbsp;
+              </Typography>
+              <MUILink color="text.secondary" variant="body2" href="#">
+                Terms of Service
+              </MUILink>
+              <Copyright />
+            </div>
+            <Stack
+              direction="row"
+              spacing={1}
+              useFlexGap
+              sx={{ justifyContent: "left", color: "text.secondary" }}
+            >
+              <IconButton
+                color="inherit"
+                size="small"
+                href="https://github.com/mui"
+                aria-label="GitHub"
+                sx={{ alignSelf: "center" }}
+              >
+                <FacebookIcon />
+              </IconButton>
+              <IconButton
+                color="inherit"
+                size="small"
+                href="https://x.com/MaterialUI"
+                aria-label="X"
+                sx={{ alignSelf: "center" }}
+              >
+                <TwitterIcon />
+              </IconButton>
+              <IconButton
+                color="inherit"
+                size="small"
+                href="https://www.linkedin.com/company/mui/"
+                aria-label="LinkedIn"
+                sx={{ alignSelf: "center" }}
+              >
+                <LinkedInIcon />
+              </IconButton>
+            </Stack>
+          </Box>
+        </Box>
+      </div>
+    </>
+  );
+};
+
+export default UserLayout;

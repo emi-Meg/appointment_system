@@ -1,0 +1,24 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "Noreen Angeleen Suarez Darunday",
+        "username": "dev.noreen",
+        "email": "noreendarunday.smct@gmail.com",
+        "contact": "09485931172",
+        "address": "Poblacion, Corella, Bohol",
+        "password": "123456",
+        "cpassword": "123456"
+      },
+      {
+        "id": 2,
+        "name": "John Doe",
+        "username": "john.doe",
+        "email": "johndoe@gmail.com",
+        "contact": "09123456789",
+        "address": "Tagbilaran City, Bohol",
+        "password": "654321",
+        "cpassword": "654321"
+      }
+    ]
+  }  

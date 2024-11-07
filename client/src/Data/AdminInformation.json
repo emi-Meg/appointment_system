@@ -1,0 +1,13 @@
+[
+    {
+        "id": 1,
+        "firstName": "Angeleen",
+        "lastName": "Suarez",
+        "username": "dev.noreen",
+        "email": "noreen@admin.com",
+        "gender": "Female",
+        "branchName": "Kia Bohol",
+        "branchCode": "BOHK",
+        "position": "Branch Manager"
+    }
+]

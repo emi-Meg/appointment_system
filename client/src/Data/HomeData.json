@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "branch": "Suzuki Auto Bohol",
+        "date": "2024-09-28",
+        "image": "../../Assets/Images/honda_img_sample.png",
+        "content": "This is content saying you will be having gift check from Suzuki Auto Bohol to experience our Christmas Promo."
+    },
+    {
+        "id": 2,
+        "branch": "DES Strong Motors",
+        "date": "2024-09-28",
+        "image": "../../Assets/Images/honda_img_sample.png",
+        "content": "Change your oil now with Strong Moto Centrum, Inc. at any 3S near your location."
+    },
+    {
+        "id": 3,
+        "branch": "Kia Auto Bohol",
+        "date": "2024-09-28",
+        "image": "../../Assets/Images/honda_img_sample.png",
+        "content": "Experience the best car wash to you car."
+    }
+]

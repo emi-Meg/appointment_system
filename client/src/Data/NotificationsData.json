@@ -1,0 +1,56 @@
+[
+    {
+        "id":1,
+        "firstName": "Noreen",
+        "lastName": "Suarez",
+        "gender": "Female",
+        "header": "There is a new appointment booking.",
+        "body": "Booked an appointment this October 25, 2024 at 10:00 AM.",
+        "status": "Read"
+    },
+    {
+        "id":2,
+        "firstName": "Angeleen",
+        "lastName": "Suarez",
+        "gender": "Female",
+        "header": "There is a new appointment booking.",
+        "body": "Booked an appointment this October 25, 2024 at 10:00 AM.",
+        "status": "Read"
+    },
+    {
+        "id":3,
+        "firstName": "Remy",
+        "lastName": "Jumawan",
+        "gender": "Male",
+        "header": "There is a new appointment booking.",
+        "body": "Booked an appointment this October 25, 2024 at 10:00 AM.",
+        "status": "Unread"
+    },
+    {
+        "id":4,
+        "firstName": "Sharp",
+        "lastName": "Crawl",
+        "gender": "Female",
+        "header": "There is a new appointment booking.",
+        "body": "Booked an appointment this October 25, 2024 at 10:00 AM.",
+        "status": "Read"
+    },
+    {
+        "id":5,
+        "firstName": "Noreen",
+        "lastName": "Suarez",
+        "gender": "Male",
+        "header": "There is a new appointment booking.",
+        "body": "Booked an appointment this October 25, 2024 at 10:00 AM.",
+        "status": "Unread"
+    },
+    {
+        "id":6,
+        "firstName": "Loraine",
+        "lastName": "Suarez",
+        "gender": "Male",
+        "header": "There is a new appointment booking.",
+        "body": "Booked an appointment this October 25, 2024 at 10:00 AM.",
+        "status": "Read"
+    }
+]

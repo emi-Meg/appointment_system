@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.body-container-signin {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row-reverse;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
+}
+
+.signinfront {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+    background-color: #0033A0;
+    align-items: center;
+}
+
+.signinfront-title h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 42px;
+}
+
+.signinfront-FooterUser p {
+    text-align: center;
+    color: white;
+}
+
+.signinfront-FooterUser a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.signinfront-FooterUser a:hover {
+    color: whitesmoke;
+}
+
+.sign-in {
+    width: 50%;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sign-in-title {
+    width: 700px;
+    text-align: center;
+}
+
+.sign-in-title h1{
+    font-size: 42px;
+}
+
+.sign-in-form{
+    width: 400px;
+}
+
+.sign-in-form p{
+    text-align: center;
+    text-decoration: none;
+}
+
+.sign-in-btn{
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign-in-btn button{
+    background-color: #008ECC;
+    color: #fff;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sign-in-btn button:hover{
+    background-color: #026894;
+}
+
+.sign-in-FooterUser p {
+    text-align: center;
+    color: #333;
+}
+
+.sign-in-FooterUser a {
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+
+.sign-in-FooterUser a:hover {
+    color: #000;
+}
+
+.box-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.finalsignin-btn a{
+    display: none;
+}
+
+/* FOR MOBILE AND TABLET VIEW */
+@media (min-width: 480px) and (max-width: 768px) {
+    .signinfront {
+        display: none;
+    }
+
+    .sign-in-title {
+        justify-content: center;
+        display: flex;
+    }
+
+    .sign-in-title h1 {
+        font-size: 26px;
+        width: 400px;
+    }
+
+    .sign-in {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .box-form{
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 30px;
+    }
+
+    .finalsignin-btn a{
+        text-decoration: none;
+        color: #333;
+        display: contents;
+    }
+
+    .finalsignin-btn a:hover{
+        color: #0D52BD;
+    }
+}
