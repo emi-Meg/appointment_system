@@ -1,0 +1,33 @@
+[
+    {
+        "branchName": "Kia Bohol",
+        "branchCode": "BOHK",
+        "position": [
+            "Sales Representative",
+            "Branch Manager",
+            "Mechanic",
+            "Customer Service Representative"
+        ]
+    },
+    {
+        "branchName": "Suzuki Auto Bohol",
+        "branchCode": "SUZBHL",
+        "position": [
+            "Branch Supervisor",
+            "Front Desk Associate",
+            "Customer Service Representative",
+            "Mechanic",
+            "Car Washer"
+        ]
+    },
+    {
+        "branchName": "DES Strong Motors, Inc.",
+        "branchCode": "DSB",
+        "position": [
+            "Branch Supervisor",
+            "Sales Representative",
+            "Mechanic",
+            "Front Desk Associate"
+        ]
+    }
+]

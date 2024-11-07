@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "customerName": "John Doe",
+        "branch": "Suzuki Auto Bohol",
+        "date": "2024-10-01",
+        "ratingComment": "The service was excellent and the staff were very helpful.",
+        "ratingScore": 5
+    },
+    {
+        "id": 2,
+        "customerName": "Jane Smith",
+        "branch": "Kia Bohol",
+        "date": "2024-10-01",
+        "ratingComment": "Had a great experience with the tire replacement.",
+        "ratingScore": 4
+    },
+    {
+        "id": 3,
+        "customerName": "Alice Johnson",
+        "branch": "DES Strong Motors",
+        "date": "2024-10-01",
+        "ratingComment": "Quick and efficient service, would recommend!",
+        "ratingScore": 4
+    },
+    {
+        "id": 4,
+        "customerName": "Bob Brown",
+        "branch": "Honda DES",
+        "date": "2024-10-02",
+        "ratingComment": "Staff was friendly but the wait time was too long.",
+        "ratingScore": 3
+    },
+    {
+        "id": 5,
+        "customerName": "Emily Davis",
+        "branch": "Strong Motor Centrum, Inc.",
+        "date": "2024-10-02",
+        "ratingComment": "Great customer service and timely repairs.",
+        "ratingScore": 5
+    },
+    {
+        "id": 6,
+        "customerName": "Michael Wilson",
+        "branch": "Suzuki Auto Bohol",
+        "date": "2024-10-03",
+        "ratingComment": "Overall a satisfactory experience, but the pricing could be better.",
+        "ratingScore": 4
+    }
+]

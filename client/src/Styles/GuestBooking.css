@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.body-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    /* overflow: hidden; */
+}
+
+.cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    background-color: #E0F7FA;
+    align-items: center;
+}
+
+.cover-title h1 {
+    text-align: center;
+    color: #333;
+}
+
+.cover-FooterUser p {
+    text-align: center;
+    color: #333;
+}
+
+.cover-FooterUser a {
+    text-decoration: none;
+    color: #333;
+}
+
+.cover-FooterUser a:hover {
+    color: black;
+}
+
+.guest-book {
+    width: 50%;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #fff;
+}
+
+.guest-book-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.guest-book-FooterUser {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.guest-book-FooterUser button {
+    border-radius: 5px;
+    width: 220px;
+    height: 40px;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    cursor: pointer;
+}
+
+.guest-book-title {
+    width: 500px;
+    text-align: center;
+}
+
+.submit-btn {
+    background-color: #003152;
+    color: white;
+}
+
+.submit-btn:hover{
+    background-color: #012136;
+}
+
+/* .register-btn {
+    background-color: #008ECC;
+    color: white;
+} */
+
+.date-time-picker {
+    margin-top: 20px;
+}
+
+.date-time-picker-form {
+    display: flex;
+    flex-direction: row;
+    gap: 2;
+    justify-content: space-evenly;
+}
+
+.css-gqp4xl-MuiPickersLayout-root .MuiPickersLayout-actionBar{
+    display: none;
+}
+
+.final-btnup a{
+    display: none;
+}
+
+/* FOR MOBILE AND TABLET VIEW */
+@media (min-width: 480px) and (max-width: 768px) {
+    .cover {
+        display: none;
+    }
+
+    .guest-book-title {
+        justify-content: center;
+        display: flex;
+    }
+
+    .guest-book-title h1 {
+        font-size: 26px;
+        width: 400px;
+    }
+
+    .guest-book {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+
+    .guest-book-FooterUser button {
+        width: 150px;
+        height: 35px;
+        font-size: 12px;
+    }
+
+    .date-time-picker-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .final-btnup a{
+        text-decoration: none;
+        color: #333;
+        display: contents;
+    }
+
+    .final-btnup a:hover{
+        color: #0D52BD;
+    }
+}

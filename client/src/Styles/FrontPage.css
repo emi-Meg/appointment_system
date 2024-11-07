@@ -1,0 +1,48 @@
+/* Style for Mobile View (Portrait) */
+@media (min-width: 480px) and (max-width: 768px) {
+    .smct-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .smct-logo{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+        padding-top: 30px !important;
+        padding-left: 0 !important;
+    }
+
+    .smct-background{
+        display: none;
+    }
+
+    .smct-body1{
+        display: flex;
+        flex-direction: column;
+        margin: 20px !important;
+    }
+
+    .smct-welcome-title h1{
+        font-size: 28px;
+    }
+
+    .smct-welcome-message p{
+        font-size: 18px;
+    }
+
+    .smct-btn button{
+        font-size: 14px;
+        width: 200px;
+        height: 44px;
+    }
+
+    .smct-img{
+        width: 400px;
+        margin-top: 30px;
+    }
+  }

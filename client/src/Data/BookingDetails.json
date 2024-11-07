@@ -1,0 +1,19 @@
+{
+    "data": {
+      "Suzuki Auto Bohol": {
+        "vehicle": ["Car", "Truck", "Motorcycle"],
+        "serviceType": ["Oil Change", "Tire Replacement", "Brake Service"],
+        "mechanic": ["John Doe", "Jane Smith", "Mike Johnson"]
+      },
+      "Kia Bohol": {
+        "vehicle": ["Sedan", "SUV", "Van"],
+        "serviceType": ["Engine Repair", "Transmission Service", "AC Repair"],
+        "mechanic": ["Emily Davis", "David Brown", "Sarah Lee"]
+      },
+      "Des Strong Motors": {
+        "vehicle": ["Convertible", "Coupe", "Hatchback"],
+        "serviceType": ["Battery Replacement", "Alignment", "Suspension Check"],
+        "mechanic": ["Robert White", "Linda Green", "James Wilson"]
+      }
+    }
+  }

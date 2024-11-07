@@ -1,0 +1,52 @@
+[
+    {
+      "id": 1,
+        "question": "How can I schedule an appointment?",
+        "answer": "You can schedule an appointment through our website, by calling us directly, or by visiting our shop."
+      },
+      {
+        "id": 2,
+        "question": "What services do you offer?",
+        "answer": "We offer a variety of services, including diagnostics, repairs, and maintenance for various types of equipment."
+      },
+      {
+        "id": 3,
+        "question": "Do I need to make an appointment for a repair?",
+        "answer": "While walk-ins are welcome, we recommend making an appointment to ensure timely service."
+      },
+      {
+        "id": 4,
+        "question": "What should I bring to my appointment?",
+        "answer": "Please bring the item needing repair, any accessories, and a brief description of the issue."
+      },
+      {
+        "id": 5,
+        "question": "How long will my repair take?",
+        "answer": "Repair times vary based on the issue and parts availability, but we will provide an estimated time during your appointment."
+      },
+      {
+        "id": 6,
+        "question": "Do you offer a warranty on repairs?",
+        "answer": "Yes, we offer a warranty on parts and labor for a specified period after the repair."
+      },
+      {
+        "id": 7,
+        "question": "What payment methods do you accept?",
+        "answer": "We accept cash, credit/debit cards, and some digital payment methods."
+      },
+      {
+        "id": 8,
+        "question": "Can I cancel or reschedule my appointment?",
+        "answer": "Yes, you can cancel or reschedule your appointment by contacting us at least 24 hours in advance."
+      },
+      {
+        "id": 9,
+        "question": "What are your business hours?",
+        "answer": "We are open Monday to Friday from 9 AM to 6 PM and Saturday from 10 AM to 4 PM."
+      },
+      {
+        "id": 10,
+        "question": "Is there a diagnostic fee?",
+        "answer": "Yes, we charge a diagnostic fee that will be applied toward the cost of the repair if you proceed with our services."
+      }
+]
