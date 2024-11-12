@@ -24,7 +24,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 interface CustomizedDialogsProps {
   open: boolean;
   onClose: () => void;
-  bookingId: number | null;
+  bookingId: string | null;
 }
 
 const CancelBookingModal: React.FC<CustomizedDialogsProps> = ({
@@ -64,12 +64,12 @@ const CancelBookingModal: React.FC<CustomizedDialogsProps> = ({
       </DialogTitle>
       <DialogContent dividers>
         <Typography gutterBottom>
-          Cancel Booking ID No. {booking.id}?
+          Cancel Booking Code <strong>{booking.id}</strong>?
         </Typography>
         <TextField
           size="small"
           id="reason"
-          label="State the reason for cancellation..."
+          placeholder="State the reason for cancellation..."
           multiline
           rows={4}
           sx={{
@@ -81,14 +81,14 @@ const CancelBookingModal: React.FC<CustomizedDialogsProps> = ({
         <button
           autoFocus
           onClick={onClose}
-          className="bg-[#6C757D] text-white rounded-3xl px-4 py-1"
+          className="bg-[#6C757D] text-white rounded-3xl px-4 py-1 transition-all duration-150 active:scale-95"
         >
           Cancel
         </button>
         <button
           autoFocus
           onClick={onClose}
-          className="bg-[#C8102E] text-white rounded-3xl px-4 py-1"
+          className="bg-[#C8102E] text-white rounded-3xl px-4 py-1 transition-all duration-150 active:scale-95"
         >
           Submit
         </button>

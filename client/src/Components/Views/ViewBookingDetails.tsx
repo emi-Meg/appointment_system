@@ -1,19 +1,31 @@
-import React from 'react';
-import { ThemeProvider } from '@emotion/react';
-import { muiThemeContext } from '../../Contexts/Themes/MUIThemeContext';
-import { Box, Card, CardContent, CardHeader, Divider, IconButton } from '@mui/material';
-import { Link, useParams } from 'react-router-dom';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import bookings from '../../Data/Bookings.json';
+import React from "react";
+import { ThemeProvider } from "@emotion/react";
+import { muiThemeContext } from "../../Contexts/Themes/MUIThemeContext";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  IconButton,
+  Table,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { Link, useParams } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import bookings from "../../Data/Bookings.json";
 
 const ViewBookingDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  
+
   if (!id) {
     return <div>Booking not found</div>;
   }
 
-  const booking = bookings.find((b) => b.id === parseInt(id));
+  const booking = bookings.find((b) => b.id === id);
 
   if (!booking) {
     return <div>Booking not found</div>;
@@ -22,8 +34,11 @@ const ViewBookingDetails: React.FC = () => {
   return (
     <div>
       <ThemeProvider theme={muiThemeContext}>
-        <div className="mt-40 flex items-center justify-center">
-          <Card variant="outlined" sx={{ width: { xs: 450, sm: 550, lg: 650 } }}>
+        <div className="mt-10 flex items-center justify-center">
+          <Card
+            variant="outlined"
+            sx={{ width: { xs: 450, sm: 550, lg: 650 } }}
+          >
             <CardHeader
               title={
                 <Box display="flex" alignItems="center">
@@ -40,16 +55,226 @@ const ViewBookingDetails: React.FC = () => {
             <Divider />
             <CardContent>
               <Box>
-                <p className='mb-2'><strong>Branch: </strong>{booking.branch}</p>
-                <p className='mb-2'><strong>Vehicle Type: </strong>{booking.vehicleType}</p>
-                <p className='mb-2'><strong>Service Request: </strong>{booking.serviceRequest}</p>
-                <p className='mb-2'><strong>Registered Conduction/Plate No.: </strong>{booking.plateNumber}</p>
-                <p className='mb-2'><strong>Other Request: </strong>{booking.otherRequest}</p>
-                <p className='mb-2'><strong>Appointment Date and Time: </strong>{booking.date} - {booking.time}</p>
-                <p className='mb-2'><strong>Name: </strong>{booking.name}</p>
-                <p className='mb-2'><strong>Contact Number: </strong>{booking.number}</p>
-                <p className='mb-2'><strong>Booked Date and Time: </strong>{booking.bookedDate} - {booking.bookedTime}</p>
-                <p className='mb-2'><strong>Status: </strong>{booking.status}</p>
+                <TableContainer sx={{ width: "100%" }}>
+                  <Table>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>
+                          Booking Code
+                        </Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.id}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>Branch</Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.branch}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>Vehicle Type</Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.vehicleType}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>
+                          Service Request
+                        </Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.serviceRequest}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>Mechanic</Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.mechanic}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>
+                          Registered Conduction/Plate No.
+                        </Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.plateNumber}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>
+                          Current Mileage
+                        </Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.currentMileage
+                          ? booking.currentMileage
+                          : "N/A"}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>Other Request</Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.otherRequest ? booking.otherRequest : "N/A"}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>
+                          Appointment Date and Time
+                        </Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.date ? booking.date : ""}-
+                        {booking.time ? booking.time : ""}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>
+                          Status
+                        </Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.status}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        <Typography fontWeight={700}>
+                          Booked Date and Time
+                        </Typography>
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          border: "1px solid #333333",
+                          paddingY: "2px",
+                        }}
+                      >
+                        {booking.bookedDate ? booking.bookedDate : ""}-
+                        {booking.bookedTime ? booking.bookedTime : ""}
+                      </TableCell>
+                    </TableRow>
+                  </Table>
+                </TableContainer>
               </Box>
             </CardContent>
           </Card>
@@ -57,6 +282,6 @@ const ViewBookingDetails: React.FC = () => {
       </ThemeProvider>
     </div>
   );
-}
+};
 
 export default ViewBookingDetails;

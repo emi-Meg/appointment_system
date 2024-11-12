@@ -37,6 +37,12 @@ import SuperLayout from "../Components/Layouts/SuperLayout";
 import SuperProfile from "../Components/Pages/SuperProfile";
 import SuperCreateAdmin from "../Components/Pages/SuperCreateAdmin";
 import SuperAdminsList from "../Components/Pages/SuperAdminsList";
+import AfterSubmissionBookingPage from "../Components/Common/AfterSubmissionBookingPage";
+import ForgotPassword from "../Components/Auth/ForgotPassword";
+import ChangePassword from "../Components/Auth/ChangePassword";
+import PrivacyPolicy from "../Components/Pages/PrivacyPolicy";
+import TermsService from "../Components/Pages/TermsService";
+import AboutUs from "../Components/Pages/AboutUs";
 
 const RouterConfig = (
   <>
@@ -63,6 +69,9 @@ const RouterConfig = (
         <Route path="feedbacks" element={<FeedbacksUser />} />
         <Route path="faqs" element={<FrequentlyAskedQuestions />} />
         <Route path="profile" element={<ProfileUser />} />
+        <Route path="privacy-policy" element={<PrivacyPolicy/>}/>
+        <Route path="terms-of-service" element={<TermsService/>}/>
+        <Route path="about-us" element={<AboutUs/>}/>
 
         {/* For the Booking Sections */}
         <Route path="addbooking" element={<AddBooking />} />
@@ -80,6 +89,8 @@ const RouterConfig = (
     <Route path="/" element={<Navigate to="/signup" />} />
     <Route path="/signup" element={<SignUp />} />
     <Route path="/signin" element={<SignIn />} />
+    <Route path="/forgot-password" element={<ForgotPassword/>}/>
+    <Route path="/change-password" element={<ChangePassword/>}/>
     <Route path="/login/admin" element={<LoginAdmin />} />
     <Route path="/smct" element={<SmctFront />} />
     <Route path="/kia" element={<KiaFront />} />
@@ -89,6 +100,7 @@ const RouterConfig = (
     <Route path="/suzukiozamiz" element={<SuzukiOzamizFront />} />
     <Route path="/guestbooking" element={<GuestBooking />} />
     <Route path="/loading" element={<LoadingAppointment />} />
+    <Route path="/thank-you" element={<AfterSubmissionBookingPage/>} />
   </>
 );
 

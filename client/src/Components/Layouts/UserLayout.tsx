@@ -44,7 +44,12 @@ function Copyright() {
   return (
     <Typography variant="body2" sx={{ color: "text.secondary", mt: 1 }}>
       {"Copyright © "}
-      <MUILink color="text.secondary" href="https://mui.com/">
+      <MUILink
+        color="text.secondary"
+        href="https://strongmotocentrum.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         SMCT Group of Companies
       </MUILink>
       &nbsp;
@@ -61,7 +66,7 @@ const UserLayout: React.FC = () => {
 
   const navItems = [
     { path: "home", label: "Home" },
-    { path: "aboutservices", label: "About/Services" },
+    { path: "aboutservices", label: "Services" },
     { path: "mybookings", label: "My Bookings" },
     { path: "support", label: "Support" },
   ];
@@ -91,7 +96,7 @@ const UserLayout: React.FC = () => {
   return (
     <>
       <AppBar
-        position="fixed"
+        position="relative"
         sx={{
           width: "100%",
           boxShadow: 0,
@@ -115,7 +120,7 @@ const UserLayout: React.FC = () => {
                   alignItems: "center",
                   justifyContent: "space-between",
                   paddingLeft: "20px",
-                  gap: { md: 5, lg: 40, xl: 80 },
+                  width: "100%",
                 }}
               >
                 <div>
@@ -124,67 +129,6 @@ const UserLayout: React.FC = () => {
                     <strong>Manage Your Appointments</strong>
                   </Typography>
                 </div>
-                {/* <div>
-                  <RouterLink to="home">
-                    <Button
-                      variant="text"
-                      sx={{ color: "white", marginRight: "20px" }}
-                    >
-                      Home
-                    </Button>
-                  </RouterLink>
-                  <RouterLink to="aboutservices">
-                    <Button
-                      variant="text"
-                      sx={{ color: "white", marginRight: "20px" }}
-                    >
-                      About/Services
-                    </Button>
-                  </RouterLink>
-                  <RouterLink to="mybookings">
-                    <Button
-                      variant="text"
-                      sx={{ color: "white", marginRight: "20px" }}
-                    >
-                      My Bookings
-                    </Button>
-                  </RouterLink>
-                  <RouterLink to="support">
-                    <Button
-                      variant="text"
-                      sx={{ color: "white", marginRight: "20px" }}
-                    >
-                      Support
-                    </Button>
-                  </RouterLink>
-                  <Button
-                    variant="text"
-                    sx={{ minWidth: 0, color: "white", marginRight: "20px" }}
-                    id="basic-button"
-                    aria-controls={open ? "basic-menu" : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? "true" : undefined}
-                    onClick={handleClick}
-                  >
-                    Settings
-                  </Button>
-                  <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={openSettings}
-                    onClose={handleClose}
-                    MenuListProps={{
-                      "aria-labelledby": "basic-button",
-                    }}
-                  >
-                    <RouterLink to="profile">
-                      <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    </RouterLink>
-                    <MenuItem onClick={handleClose}>Notifications</MenuItem>
-                    <Divider/>
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                  </Menu>
-                </div> */}
                 <div>
                   {navItems.map((item) => (
                     <NavLink
@@ -192,7 +136,7 @@ const UserLayout: React.FC = () => {
                       to={item.path}
                       style={({ isActive }) => ({
                         color: isActive ? "#FFD700" : "white",
-                        marginRight: "20px"
+                        marginRight: "20px",
                       })}
                     >
                       <Button variant="text" sx={{ color: "inherit" }}>
@@ -274,7 +218,7 @@ const UserLayout: React.FC = () => {
                       <MenuItem>Home</MenuItem>
                     </RouterLink>
                     <RouterLink to="aboutservices">
-                      <MenuItem>About/Services</MenuItem>
+                      <MenuItem>Services</MenuItem>
                     </RouterLink>
                     <RouterLink to="mybookings">
                       <MenuItem>My Bookings</MenuItem>
@@ -462,7 +406,7 @@ const UserLayout: React.FC = () => {
               <MUILink
                 color="text.secondary"
                 variant="body2"
-                href="#"
+                href="/user/faqs"
                 sx={{ color: "white" }}
               >
                 FAQs
@@ -484,7 +428,7 @@ const UserLayout: React.FC = () => {
               <MUILink
                 color="text.secondary"
                 variant="body2"
-                href="#"
+                href="/user/about-us"
                 sx={{ color: "white" }}
               >
                 About us
@@ -492,15 +436,17 @@ const UserLayout: React.FC = () => {
               <MUILink
                 color="text.secondary"
                 variant="body2"
-                href="#"
+                href="https://strongmotocentrum.com/career-2/"
                 sx={{ color: "white" }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Careers
               </MUILink>
               <MUILink
                 color="text.secondary"
                 variant="body2"
-                href="#"
+                href="home"
                 sx={{ color: "white" }}
               >
                 Press
@@ -522,7 +468,7 @@ const UserLayout: React.FC = () => {
               <MUILink
                 color="text.secondary"
                 variant="body2"
-                href="#"
+                href="terms-of-service"
                 sx={{ color: "white" }}
               >
                 Terms
@@ -530,7 +476,7 @@ const UserLayout: React.FC = () => {
               <MUILink
                 color="text.secondary"
                 variant="body2"
-                href="#"
+                href="privacy-policy"
                 sx={{ color: "white" }}
               >
                 Privacy
@@ -538,7 +484,7 @@ const UserLayout: React.FC = () => {
               <MUILink
                 color="text.secondary"
                 variant="body2"
-                href="#"
+                href="support"
                 sx={{ color: "white" }}
               >
                 Contact
@@ -568,13 +514,21 @@ const UserLayout: React.FC = () => {
             }}
           >
             <div>
-              <MUILink color="text.secondary" variant="body2" href="#">
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="privacy-policy"
+              >
                 Privacy Policy
               </MUILink>
               <Typography sx={{ display: "inline", mx: 0.5, opacity: 0.5 }}>
                 &nbsp;•&nbsp;
               </Typography>
-              <MUILink color="text.secondary" variant="body2" href="#">
+              <MUILink
+                color="text.secondary"
+                variant="body2"
+                href="terms-of-service"
+              >
                 Terms of Service
               </MUILink>
               <Copyright />
@@ -588,9 +542,11 @@ const UserLayout: React.FC = () => {
               <IconButton
                 color="inherit"
                 size="small"
-                href="https://github.com/mui"
-                aria-label="GitHub"
+                href="https://www.facebook.com/StrongMotoCentrumInc/"
+                aria-label="Facebook"
                 sx={{ alignSelf: "center" }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FacebookIcon />
               </IconButton>
@@ -600,6 +556,8 @@ const UserLayout: React.FC = () => {
                 href="https://x.com/MaterialUI"
                 aria-label="X"
                 sx={{ alignSelf: "center" }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <TwitterIcon />
               </IconButton>
@@ -609,6 +567,8 @@ const UserLayout: React.FC = () => {
                 href="https://www.linkedin.com/company/mui/"
                 aria-label="LinkedIn"
                 sx={{ alignSelf: "center" }}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <LinkedInIcon />
               </IconButton>

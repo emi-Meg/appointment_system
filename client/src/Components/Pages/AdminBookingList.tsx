@@ -216,57 +216,65 @@ const BookingListAdmin: React.FC = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {(rowsPerPage > 0
-                ? filteredBookings.slice(
-                    page * rowsPerPage,
-                    page * rowsPerPage + rowsPerPage
-                  )
-                : filteredBookings
-              ).map((booking) => (
-                <TableRow
-                  key={booking.id}
-                  sx={{
-                    backgroundColor:
-                      booking.category === "Guest"
-                        ? "#f0f7ff"
-                        : booking.category === "Walk-in"
-                        ? "#ffffe0"
-                        : booking.category === "Registered"
-                        ? "#f0fff4"
-                        : "inherit",
-                  }}
-                >
-                  <TableCell>{booking.id}</TableCell>
-                  <TableCell>{booking.name}</TableCell>
-                  <TableCell>{booking.plateNumber}</TableCell>
-                  <TableCell>{booking.serviceRequest}</TableCell>
-                  <TableCell>
-                    {booking.bookedDate} {booking.bookedTime}
-                  </TableCell>
-                  <TableCell>
-                    <ul className="flex gap-3">
-                      <li
-                        onClick={() => handleOpenViewDialog(booking)}
-                        className="font-semibold cursor-pointer hover:text-blue-600"
-                      >
-                        View
-                      </li>
-                      <li
-                        onClick={handleCancelAppointment}
-                        className="font-semibold cursor-pointer hover:text-red-600"
-                      >
-                        Cancel
-                      </li>
-                      <li
-                        onClick={handleApproveAppointment}
-                        className="font-semibold cursor-pointer hover:text-green-600"
-                      >
-                        Approve
-                      </li>
-                    </ul>
+              {filteredBookings.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={6} align="center">
+                    No bookings yet
                   </TableCell>
                 </TableRow>
-              ))}
+              ) : (
+                (rowsPerPage > 0
+                  ? filteredBookings.slice(
+                      page * rowsPerPage,
+                      page * rowsPerPage + rowsPerPage
+                    )
+                  : filteredBookings
+                ).map((booking) => (
+                  <TableRow
+                    key={booking.id}
+                    sx={{
+                      backgroundColor:
+                        booking.category === "Guest"
+                          ? "#f0f7ff"
+                          : booking.category === "Walk-in"
+                          ? "#ffffe0"
+                          : booking.category === "Registered"
+                          ? "#f0fff4"
+                          : "inherit",
+                    }}
+                  >
+                    <TableCell>{booking.id}</TableCell>
+                    <TableCell>{booking.name}</TableCell>
+                    <TableCell>{booking.plateNumber}</TableCell>
+                    <TableCell>{booking.serviceRequest}</TableCell>
+                    <TableCell>
+                      {booking.bookedDate} {booking.bookedTime}
+                    </TableCell>
+                    <TableCell>
+                      <ul className="flex gap-3">
+                        <li
+                          onClick={() => handleOpenViewDialog(booking)}
+                          className="font-semibold cursor-pointer hover:text-blue-600"
+                        >
+                          View
+                        </li>
+                        <li
+                          onClick={handleCancelAppointment}
+                          className="font-semibold cursor-pointer hover:text-red-600"
+                        >
+                          Cancel
+                        </li>
+                        <li
+                          onClick={handleApproveAppointment}
+                          className="font-semibold cursor-pointer hover:text-green-600"
+                        >
+                          Approve
+                        </li>
+                      </ul>
+                    </TableCell>
+                  </TableRow>
+                ))
+              )}
               {emptyRows > 0 && (
                 <TableRow style={{ height: 53 * emptyRows }}>
                   <TableCell colSpan={7} />

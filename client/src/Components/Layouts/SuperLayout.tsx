@@ -12,7 +12,6 @@ import {
   faBars,
   faBarsStaggered,
   faXmark,
-  faUserPlus,
   faUsersGear,
   faRightFromBracket,
   faUserTie,
@@ -59,7 +58,6 @@ const SuperLayout: React.FC = () => {
 
   const sidebarItems = [
     { name: "Profile", icon: faUserTie, path: "profile" },
-    { name: "Create Admin Account", icon: faUserPlus, path: "create-admin" },
     { name: "List of Admins", icon: faUsersGear, path: "admins-list" },
     { name: "Logout", icon: faRightFromBracket, path: "logout" }
   ];

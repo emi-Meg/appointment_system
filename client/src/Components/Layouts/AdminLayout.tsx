@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { MouseEvent, useEffect, useState } from "react";
 import {
   Avatar,
   Badge,
   Divider,
+  Menu,
+  MenuItem,
   ThemeProvider,
   Tooltip,
   Typography,
@@ -28,11 +30,24 @@ import smct_group from "../../Assets/Images/smct_group.png";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import notifs from "../../Data/NotificationsData.json";
 import Swal from "sweetalert2";
+import { Gender } from "../../Enums/Gender";
+import admin_female from "../../Assets/Svg/admin-female-profile.svg";
+import admin_male from "../../Assets/Svg/admin-male-profile.svg";
+import adminInfoData from "../../Data/AdminInformation.json";
 
 const LayoutAdmin: React.FC = () => {
   const [openSidebar, setOpenSidebar] = useState<boolean>(false);
   const location = useLocation();
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleScreenSize = () => {
     setIsSmallScreen(window.innerWidth < 481);
@@ -59,22 +74,25 @@ const LayoutAdmin: React.FC = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Logout"
-    })
+      confirmButtonText: "Logout",
+    });
     // .then(
     // );
   };
 
-  const sidebarItems = [
+  const headerMenu = [
     { name: "Profile", icon: faUser, path: "profile" },
     { name: "Notifications", icon: faBell, path: "notifications" },
+  ];
+
+  const sidebarItems = [
+    { name: "Reports", icon: faFileInvoice, path: "reports" },
     { name: "Booking List", icon: faCalendarCheck, path: "booking-list" },
     { name: "Calendar", icon: faCalendarDays, path: "calendar" },
     { name: "Message", icon: faMessage, path: "message" },
     { name: "Add/Modify Pages", icon: faPager, path: "modify-pages" },
     { name: "Add/Modify Services", icon: faToolbox, path: "modify-services" },
     { name: "Users List", icon: faUsers, path: "users-list" },
-    { name: "Reports", icon: faFileInvoice, path: "reports" },
     { name: "Logout", icon: faRightFromBracket, path: "logout" },
   ];
 
@@ -108,7 +126,22 @@ const LayoutAdmin: React.FC = () => {
                 </p>
               </div>
               <div className="flex flex-col items-center mb-7">
-                <Avatar sx={{ width: 100, height: 100 }} />
+                {adminInfoData.map((admin) => (
+                  <Avatar
+                    key={admin.id}
+                    alt="User Avatar"
+                    src={
+                      admin.gender === Gender.Female ? admin_female : admin_male
+                    }
+                    sx={{
+                      cursor: "pointer",
+                      bgcolor: admin.gender === "Female" ? "pink" : "#B0E0E6", //#B0E0E6 for male
+                      color: "black",
+                      width: 100,
+                      height: 100,
+                    }}
+                  />
+                ))}
                 <p className="text-base uppercase font-semibold text-white mt-1">
                   Angeleen Suarez
                 </p>
@@ -157,7 +190,10 @@ const LayoutAdmin: React.FC = () => {
                 />
                 <div>
                   <ul className="text-white">
-                    <li onClick={handleLogout} className="cursor-pointer hover:bg-blue-600 block px-8 py-3">
+                    <li
+                      onClick={handleLogout}
+                      className="cursor-pointer hover:bg-blue-600 block px-8 py-3"
+                    >
                       Logout
                     </li>
                   </ul>
@@ -197,27 +233,10 @@ const LayoutAdmin: React.FC = () => {
                       },
                     }}
                   >
-                    {/* <Link to={path}>
-                      <li
-                        className={`px-2 py-4 block transition duration-300 text-center text-white cursor-pointer ${
-                          currentPath === path
-                            ? "bg-[#001f3f] text-white"
-                            : "hover:bg-blue-600"
-                        }`}
-                      >
-                        {name === "Notifications" ? (
-                          <Badge badgeContent={notifCount} color="error">
-                            <FontAwesomeIcon icon={icon} className="text-2xl" />
-                          </Badge>
-                        ) : (
-                          <FontAwesomeIcon icon={icon} className="text-2xl" />
-                        )}
-                      </li>
-                    </Link> */}
                     <Link
                       key={name}
-                      to={name === "Logout" ? "#" : path} // Use "#" for the logout item
-                      onClick={name === "Logout" ? handleLogout : undefined} // Handle logout separately
+                      to={name === "Logout" ? "#" : path}
+                      onClick={name === "Logout" ? handleLogout : undefined}
                     >
                       <li
                         className={`px-2 py-4 block transition duration-300 text-center text-white cursor-pointer ${
@@ -260,7 +279,7 @@ const LayoutAdmin: React.FC = () => {
                 )}
               </button>
             </div>
-            <div>
+            <div className="flex items-center gap-3">
               <Typography
                 color="#333"
                 fontWeight={700}
@@ -268,6 +287,53 @@ const LayoutAdmin: React.FC = () => {
               >
                 APPOINTMENT SYSTEM ADMIN PANEL
               </Typography>
+              {adminInfoData.map((admin) => (
+                <Avatar
+                  key={admin.id}
+                  alt="User Avatar"
+                  src={
+                    admin.gender === Gender.Female ? admin_female : admin_male
+                  }
+                  id="basic-button"
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                  sx={{
+                    cursor: "pointer",
+                    bgcolor: admin.gender === "Female" ? "pink" : "#B0E0E6", //#B0E0E6 for male
+                    color: "black",
+                  }}
+                />
+              ))}
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                {headerMenu.map(({ name, path }) => (
+                  <Link to={path}>
+                    <MenuItem onClick={handleClose}>
+                      {name}
+                      {name === "Notifications" && (
+                        <Badge
+                          badgeContent={notifCount}
+                          color="error"
+                          sx={{
+                            marginLeft: "15px",
+                            transform: "translateY(-5px)",
+                            transition: "transform 0.3s",
+                          }}
+                        />
+                      )}
+                    </MenuItem>
+                  </Link>
+                ))}
+              </Menu>
             </div>
           </div>
           <div className="w-full h-full overflow-y-auto overflow-x-hidden">

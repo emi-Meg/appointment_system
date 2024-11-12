@@ -3,3 +3,8 @@ export const steps = [
     "Pick your date and time",
     "Provide your information",
   ];
+
+export const steps2 = [
+  "Choose your service category",
+  "Provide your information",
+];

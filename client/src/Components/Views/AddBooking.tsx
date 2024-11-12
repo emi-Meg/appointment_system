@@ -19,6 +19,10 @@ import {
   StepContent,
   StepLabel,
   Stepper,
+  Table,
+  TableCell,
+  TableContainer,
+  TableRow,
   TextField,
   ThemeProvider,
   Typography,
@@ -35,7 +39,7 @@ import { DateTime } from "luxon";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -335,158 +339,308 @@ const AddBooking: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmitBooking}>
-    <div>
-      <ThemeProvider theme={muiThemeContext}>
-        <div className="mt-40 flex items-center justify-center">
-          <Card
-            variant="outlined"
-            sx={{ width: { xs: 450, sm: 550, lg: 650 } }}
-          >
-            <CardHeader
-              title={
-                <Box display="flex" alignItems="center" color="white">
-                  <IconButton color="inherit">
-                    <Link to="/user/mybookings">
-                    <ArrowBackIcon />
-                    </Link>
-                  </IconButton>
-                  Add New Booking
-                </Box>
-              }
-              sx={{ backgroundColor: "#0033A0", color: "white" }}
-            />
-            <Divider />
-            <CardContent>
-              <Box>
-                <Stepper activeStep={activeStep} orientation="vertical">
-                  {steps.map((step, index) => (
-                    <Step key={step.label}>
-                      <StepLabel
-                        optional={
-                          index === steps.length - 1 ? (
-                            <Typography variant="caption">Last step</Typography>
-                          ) : null
-                        }
-                      >
-                        {step.label}
-                      </StepLabel>
-                      <StepContent>
-                        <Typography>{step.form}</Typography>
-                        <Box sx={{ mb: 2 }}>
-                          <Button
-                            onClick={handleNext}
-                            sx={{
-                              mt: 1,
-                              mr: 1,
-                              backgroundColor: "#FF6600",
-                              color: "white",
-                            }}
-                            disabled={
-                              (activeStep === 0 &&
-                                (!branch ||
-                                  !vehicleType ||
-                                  !serviceRequest ||
-                                  !mechanic ||
-                                  !plateNumber)) ||
-                              (activeStep === 1 &&
-                                (!selectedDate || !selectedTime))
-                            }
-                          >
-                            {index === steps.length - 1 ? "Finish" : "Continue"}
-                          </Button>
-                          <Button
-                            disabled={index === 0}
-                            onClick={handleBack}
-                            sx={{ mt: 1, mr: 1 }}
-                          >
-                            Back
-                          </Button>
-                        </Box>
-                      </StepContent>
-                    </Step>
-                  ))}
-                </Stepper>
-                {activeStep === steps.length && (
-                  <Paper square elevation={0} sx={{ p: 3 }}>
-                    <Typography>
-                      Just a quick check, please review your details to finalize
-                      your appointment!
-                    </Typography>
-                    <Box marginTop={2} marginBottom={2}>
-                        <p>
-                          <strong>Branch: </strong>
-                          {branch}
-                        </p>
-                        <p>
-                          <strong>Vehicle Type: </strong>
-                          {vehicleType}
-                        </p>
-                        <p>
-                          <strong>Service Request: </strong>
-                          {serviceRequest}
-                        </p>
-                        <p>
-                          <strong>Choose Your Mechanic: </strong>
-                          {mechanic}
-                        </p>
-                        <p>
-                          <strong>Registered Conduction/Plate No.: </strong>
-                          {plateNumber}
-                        </p>
-                        <p>
-                          <strong>Current Mileage: </strong>
-                          {currentMileage ? currentMileage : "N/A"}
-                        </p>
-                        <p>
-                          <strong>Other Request: </strong>
-                          {otherRequest ? otherRequest : "N/A"}
-                        </p>
-                        <p>
-                          <strong>Appointment Date and Time: </strong>
-                          {selectedDate
-                            ? selectedDate.toLocaleDateString()
-                            : ""}
-                          -
-                          {selectedTime
-                            ? selectedTime.toLocaleTimeString()
-                            : ""}
-                        </p>
-                      <FormControlLabel
-                        required
-                        control={<Checkbox />}
-                        label="I confirm that the details I provided are accurate."
+      <div>
+        <ThemeProvider theme={muiThemeContext}>
+          <div className="mt-10 flex items-center justify-center">
+            <Card
+              variant="outlined"
+              sx={{ width: { xs: 450, sm: 550, lg: 650 } }}
+            >
+              <CardHeader
+                title={
+                  <Box display="flex" alignItems="center" color="white">
+                    <IconButton color="inherit">
+                      <Link to="/user/mybookings">
+                        <ArrowBackIcon />
+                      </Link>
+                    </IconButton>
+                    Add New Booking
+                  </Box>
+                }
+                sx={{ backgroundColor: "#0033A0", color: "white" }}
+              />
+              <Divider />
+              <CardContent>
+                <Box>
+                  <Stepper activeStep={activeStep} orientation="vertical">
+                    {steps.map((step, index) => (
+                      <Step key={step.label}>
+                        <StepLabel
+                          optional={
+                            index === steps.length - 1 ? (
+                              <Typography variant="caption">
+                                Last step
+                              </Typography>
+                            ) : null
+                          }
+                        >
+                          {step.label}
+                        </StepLabel>
+                        <StepContent>
+                          <Typography>{step.form}</Typography>
+                          <Box sx={{ mb: 2 }}>
+                            <Button
+                              onClick={handleNext}
+                              sx={{
+                                mt: 1,
+                                mr: 1,
+                                backgroundColor: "#FF6600",
+                                color: "white",
+                              }}
+                              disabled={
+                                (activeStep === 0 &&
+                                  (!branch ||
+                                    !vehicleType ||
+                                    !serviceRequest ||
+                                    !mechanic ||
+                                    !plateNumber)) ||
+                                (activeStep === 1 &&
+                                  (!selectedDate || !selectedTime))
+                              }
+                            >
+                              {index === steps.length - 1
+                                ? "Finish"
+                                : "Continue"}
+                            </Button>
+                            <Button
+                              disabled={index === 0}
+                              onClick={handleBack}
+                              sx={{ mt: 1, mr: 1 }}
+                            >
+                              Back
+                            </Button>
+                          </Box>
+                        </StepContent>
+                      </Step>
+                    ))}
+                  </Stepper>
+                  {activeStep === steps.length && (
+                    <Paper square elevation={0} sx={{ p: 3 }}>
+                      <Typography>
+                        Just a quick check, please review your details to
+                        finalize your appointment!
+                      </Typography>
+                      <Box marginTop={2} marginBottom={2}>
+                        <TableContainer sx={{ width: "100%" }}>
+                          <Table>
+                            <TableRow>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                <Typography fontWeight={700}>Branch</Typography>
+                              </TableCell>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                {branch}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                <Typography fontWeight={700}>
+                                  Vehicle Type
+                                </Typography>
+                              </TableCell>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                {vehicleType}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                <Typography fontWeight={700}>
+                                  Service Request
+                                </Typography>
+                              </TableCell>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                {serviceRequest}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                <Typography fontWeight={700}>
+                                  Mechanic
+                                </Typography>
+                              </TableCell>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                {mechanic}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                <Typography fontWeight={700}>
+                                  Registered Conduction/Plate No.
+                                </Typography>
+                              </TableCell>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                {plateNumber}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                <Typography fontWeight={700}>
+                                  Current Mileage
+                                </Typography>
+                              </TableCell>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                {currentMileage ? currentMileage : "N/A"}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                <Typography fontWeight={700}>
+                                  Other Request
+                                </Typography>
+                              </TableCell>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                {otherRequest ? otherRequest : "N/A"}
+                              </TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                <Typography fontWeight={700}>
+                                  Appointment Date and Time
+                                </Typography>
+                              </TableCell>
+                              <TableCell
+                                sx={{
+                                  border: "1px solid #333333",
+                                  paddingY: "2px",
+                                }}
+                              >
+                                {selectedDate
+                                  ? selectedDate.toLocaleDateString()
+                                  : ""}
+                                -
+                                {selectedTime
+                                  ? selectedTime.toLocaleTimeString()
+                                  : ""}
+                              </TableCell>
+                            </TableRow>
+                          </Table>
+                        </TableContainer>
+                        <FormControlLabel
+                          required
+                          control={<Checkbox />}
+                          label="I confirm that the details I provided are accurate."
+                          sx={{
+                            marginTop: "10px",
+                          }}
+                        />
+                      </Box>
+                      <Box
                         sx={{
-                          marginTop: "10px",
+                          display: "flex",
+                          flexDirection: "row",
+                          pt: 1,
+                          pb: 2,
                         }}
-                      />
-                    </Box>
-                    <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-                      Reset
-                    </Button>
-                    <div className="flex justify-center">
-                      <button
-                        type="submit"
-                        className="bg-[#FF6600] text-white py-2 px-5 rounded-3xl cursor-pointer"
-                        disabled={isSubmitting}
                       >
-                        {isSubmitting ? (
-                          <>
-                            <FontAwesomeIcon icon={faSpinner} spin />{" "}
-                            Submitting...
-                          </>
-                        ) : (
-                          "Submit"
-                        )}
-                      </button>
-                    </div>
-                  </Paper>
-                )}
-              </Box>
-            </CardContent>
-          </Card>
-        </div>
-      </ThemeProvider>
-    </div>
+                        <Button
+                          color="inherit"
+                          disabled={activeStep === 0}
+                          onClick={handleBack}
+                          sx={{ mr: 1 }}
+                        >
+                          Back
+                        </Button>
+                        <Box sx={{ flex: "1 1 auto" }} />
+                        <Button onClick={handleReset}>Reset</Button>
+                      </Box>
+                      <div className="flex justify-center">
+                        <button
+                          type="submit"
+                          className="bg-[#FF6600] text-white py-2 px-5 rounded-3xl cursor-pointer transition-all duration-150 active:scale-95"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <FontAwesomeIcon icon={faSpinner} spin />{" "}
+                              Submitting...
+                            </>
+                          ) : (
+                            "Submit"
+                          )}
+                        </button>
+                      </div>
+                    </Paper>
+                  )}
+                </Box>
+              </CardContent>
+            </Card>
+          </div>
+        </ThemeProvider>
+      </div>
     </form>
   );
 };
