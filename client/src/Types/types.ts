@@ -101,7 +101,6 @@ export interface Admin {
   id: string;
   firstName: string;
   lastName: string;
-  username: string;
   email: string;
   gender: string;
   branchName: string;

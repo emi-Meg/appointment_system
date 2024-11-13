@@ -104,7 +104,7 @@ const EditBookingDetails: React.FC = () => {
     return <div>Booking not found</div>;
   }
 
-  const booking = bookings.find((b) => b.id === parseInt(id));
+  const booking = bookings.find((b) => b.id === id);
 
   if (!booking) {
     return <div>Booking not found</div>;
@@ -113,7 +113,7 @@ const EditBookingDetails: React.FC = () => {
   return (
     <div>
       <ThemeProvider theme={muiThemeContext}>
-        <div className="mt-40 flex items-center justify-center">
+        <div className="mt-10 flex items-center justify-center">
           <Card
             variant="outlined"
             sx={{ width: { xs: 450, sm: 550, lg: 650 } }}

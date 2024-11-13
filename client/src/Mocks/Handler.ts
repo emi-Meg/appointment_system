@@ -76,15 +76,15 @@ export const handlers = [
   //For sign in
   http.post("/api/signin", async ({ request }) => {
     const info = await request.formData();
-    const username = info.get("username");
+    const email = info.get("email");
     const password = info.get("password");
 
-    console.log("Received username:", username);
+    console.log("Received email:", email);
     console.log("Received password:", password);
 
     const user = users.find(
       (user) =>
-        (user.username === username || user.email === username) &&
+        (user.username === email || user.email === email) &&
         user.password === password
     );
 
@@ -93,7 +93,7 @@ export const handlers = [
         {
           message: "Login successful!",
           token: "mocked_token",
-          user: { username },
+          user: { email },
         },
         { status: 200 }
       );
@@ -133,7 +133,7 @@ export const handlers = [
     try {
       const info = await request.json() as Admin;
     
-      const { firstName, lastName, username, email, gender, branchName, branchCode, position, password } = info;
+      const { firstName, lastName, email, gender, branchName, branchCode, position, password } = info;
   
       const newAdminId = users.length + 1;
   
@@ -141,7 +141,6 @@ export const handlers = [
         id: newAdminId,
         firstName,
         lastName,
-        username,
         email,
         gender,
         branchName,

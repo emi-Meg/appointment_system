@@ -14,6 +14,9 @@ import { Admin, Branch } from "../../Types/types";
 import { useMutation, useQueryClient } from "react-query";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const createAdmin = async (newAdmin: Admin) => {
   try {
@@ -30,7 +33,6 @@ const createAdmin = async (newAdmin: Admin) => {
 const SuperCreateAdmin: React.FC = () => {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [gender, setGender] = useState<string>("");
   const [branchName, setBranchName] = useState<Branch | null>(null);
@@ -62,7 +64,6 @@ const SuperCreateAdmin: React.FC = () => {
       id: "",
       firstName: firstName.trim(),
       lastName: lastName.trim(),
-      username: username.trim(),
       email: email.trim(),
       gender: gender.trim(),
       branchName: branchName?.branchName || "",
@@ -71,7 +72,7 @@ const SuperCreateAdmin: React.FC = () => {
       password: password.trim(),
     };
 
-    if (!newAdmin.firstName || !newAdmin.lastName || !newAdmin.username) {
+    if (!newAdmin.firstName || !newAdmin.lastName) {
       console.error("Required fields are missing");
       return;
     }
@@ -93,7 +94,6 @@ const SuperCreateAdmin: React.FC = () => {
   const handleReset = () => {
     setFirstName("");
     setLastName("");
-    setUsername("");
     setEmail("");
     setGender("");
     setBranchName(null);
@@ -103,8 +103,14 @@ const SuperCreateAdmin: React.FC = () => {
   };
 
   return (
-    <div className="w-full">
-      <div className="mb-5 w-full">
+    <div className="w-full lg:px-96">
+      <div className="pb-20 shadow-lg border-2 border-[#EBEBE4] rounded-xl">
+        <div className="flex justify-end px-10 pt-5">
+          <Link to='/dev/admins-list'>
+          <button><FontAwesomeIcon icon={faXmark} size="lg" color="#333"/></button>
+          </Link>
+        </div>
+      <div className="my-5 w-full">
         <h3 className="uppercase text-xl lg:text-3xl font-semibold text-center">
           Create New Admin Account
         </h3>
@@ -127,14 +133,6 @@ const SuperCreateAdmin: React.FC = () => {
               value={lastName}
               label="Last Name"
               onChange={(event) => setLastName(event.target.value)}
-              fullWidth
-            />
-            <TextField
-              size="small"
-              name="username"
-              value={username}
-              label="Username"
-              onChange={(event) => setUsername(event.target.value)}
               fullWidth
             />
             <TextField
@@ -227,6 +225,7 @@ const SuperCreateAdmin: React.FC = () => {
           </div>
         </div>
       </form>
+      </div>
     </div>
   );
 };

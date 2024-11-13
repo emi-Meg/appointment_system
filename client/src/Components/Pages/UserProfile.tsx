@@ -5,8 +5,8 @@ import { Avatar, Box, TextField, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const ProfileUser: React.FC = () => {
-  const [name, setName] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [contact, setContact] = useState<string>("");
   const [address, setAddress] = useState<string>("");
@@ -16,12 +16,12 @@ const ProfileUser: React.FC = () => {
   return (
     <div>
       <ThemeProvider theme={muiThemeContext}>
-        <div className="mt-40 flex items-center justify-center">
+        <div className="mt-10 flex items-center justify-center">
           <Box
             sx={{
               width: { lg: 600, sm: 500, xs: 400 },
               borderRadius: 2,
-              backgroundColor: "#F5F5F5",
+              backgroundColor: "#E0F7FA",
               padding: "30px",
               display: "flex",
               alignItems: "center",
@@ -38,30 +38,33 @@ const ProfileUser: React.FC = () => {
                 width: {lg:200, xs:130},
                 height: {lg:200, xs:130},
                 marginBottom: 2,
+                fontSize: '50px',
+                fontWeight: '700'
               }}
               alt="Remy Sharp"
               src="/broken-image.jpg"
+
             />
             <Typography>Personal Information</Typography>
             <TextField
               size="small"
-              id="name"
-              label="Name"
+              id="firstName"
+              label="First Name"
               variant="outlined"
-              value={name}
+              value={firstName}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                setName(event.target.value)
+                setFirstName(event.target.value)
               }
               sx={{ marginBottom: "10px", width: "80%" }}
             />
             <TextField
               size="small"
-              id="username"
-              label="Username"
+              id="lastName"
+              label="Last Name"
               variant="outlined"
-              value={username}
+              value={lastName}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                setUsername(event.target.value)
+                setLastName(event.target.value)
               }
               sx={{ marginBottom: "10px", width: "80%" }}
             />

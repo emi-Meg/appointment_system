@@ -24,6 +24,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import TablePaginationActions from "../Common/TablePaginationActions";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
+import { Link } from "react-router-dom";
 
 const fetchAdmins = async (): Promise<Admin[]> => {
   try {
@@ -127,9 +128,10 @@ const SuperAdminsList: React.FC = () => {
 
   return (
     <div>
+      <div className="mb-5 flex justify-between">
       {/* Search Input */}
       <FormControl
-        sx={{ width: { xs: "100%", md: "25ch" }, marginBottom: "20px" }}
+        sx={{ width: { xs: "100%", md: "25ch" }}}
         variant="outlined"
       >
         <OutlinedInput
@@ -149,7 +151,10 @@ const SuperAdminsList: React.FC = () => {
           }}
         />
       </FormControl>
-
+      <Link to='/dev/create-admin'>
+      <button className="bg-[#FF6600] text-white active:scale-95 px-3 py-2 rounded-3xl font-semibold">Add Admin</button>
+      </Link>
+      </div>
       <TableContainer>
         <Table>
           <TableHead>
@@ -187,32 +192,40 @@ const SuperAdminsList: React.FC = () => {
           </TableHead>
 
           <TableBody>
-            {filteredAdmins
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((admin: any) => (
-                <TableRow key={admin.id}>
-                  <TableCell>{admin.lastName}</TableCell>
-                  <TableCell>{admin.firstName}</TableCell>
-                  <TableCell>{admin.username}</TableCell>
-                  <TableCell>{admin.email}</TableCell>
-                  <TableCell>{admin.gender}</TableCell>
-                  <TableCell>{admin.branchName}</TableCell>
-                  <TableCell>{admin.branchCode}</TableCell>
-                  <TableCell>{admin.position}</TableCell>
-                  <TableCell>
-                    <FontAwesomeIcon
-                      icon={faPenToSquare}
-                      size="xl"
-                      className="cursor-pointer active:scale-90 active:text-black mr-3"
-                    />
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      size="xl"
-                      className="cursor-pointer active:scale-90 active:text-black"
-                    />
-                  </TableCell>
-                </TableRow>
-              ))}
+            {filteredAdmins.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={8} align="center">
+                  No administrators yet
+                </TableCell>
+              </TableRow>
+            ) : (
+              filteredAdmins
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((admin: any) => (
+                  <TableRow key={admin.id}>
+                    <TableCell>{admin.lastName}</TableCell>
+                    <TableCell>{admin.firstName}</TableCell>
+                    <TableCell>{admin.username}</TableCell>
+                    <TableCell>{admin.email}</TableCell>
+                    <TableCell>{admin.gender}</TableCell>
+                    <TableCell>{admin.branchName}</TableCell>
+                    <TableCell>{admin.branchCode}</TableCell>
+                    <TableCell>{admin.position}</TableCell>
+                    <TableCell>
+                      <FontAwesomeIcon
+                        icon={faPenToSquare}
+                        size="xl"
+                        className="cursor-pointer active:scale-90 active:text-black mr-3"
+                      />
+                      <FontAwesomeIcon
+                        icon={faTrash}
+                        size="xl"
+                        className="cursor-pointer active:scale-90 active:text-black"
+                      />
+                    </TableCell>
+                  </TableRow>
+                ))
+            )}
             {emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>
                 <TableCell colSpan={9} />

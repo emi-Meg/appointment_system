@@ -14,8 +14,8 @@ import Swal from "sweetalert2";
 import validator from 'validator';
 
 const SignUp: React.FC = () => {
-  const [name, setName] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [contact, setContact] = useState<string>("");
   const [address, setAddress] = useState<string>("");
@@ -32,8 +32,8 @@ const SignUp: React.FC = () => {
     setIsSubmitting(true);
 
     const users = {
-      name,
-      username,
+      firstName,
+      lastName,
       email,
       contact,
       address,
@@ -48,8 +48,8 @@ const SignUp: React.FC = () => {
 
       if (response.status === 201) {
         // Clear the form fields
-        setName("");
-        setUsername("");
+        setFirstName("");
+        setLastName("");
         setEmail("");
         setContact("");
         setAddress("");
@@ -137,24 +137,24 @@ const SignUp: React.FC = () => {
               <Box className="box-form">
                 <TextField
                   size="small"
-                  id="name"
-                  label="Name"
+                  id="firstName"
+                  label="First Name"
                   variant="outlined"
-                  value={name}
+                  value={firstName}
                   onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setName(event.target.value)
+                    setFirstName(event.target.value)
                   }
                   sx={{ marginBottom: "10px", width: "100%" }}
                   required
                 />
                 <TextField
                   size="small"
-                  id="username"
-                  label="Username"
+                  id="lastName"
+                  label="Last Name"
                   variant="outlined"
-                  value={username}
+                  value={lastName}
                   onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setUsername(event.target.value)
+                    setLastName(event.target.value)
                   }
                   sx={{ marginBottom: "10px", width: "100%" }}
                   required

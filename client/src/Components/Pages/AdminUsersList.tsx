@@ -124,18 +124,26 @@ const AdminUsersList: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {sortedUsers
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((user) => (
-                <TableRow key={user.id}>
-                  <TableCell>{user.id}</TableCell>
-                  <TableCell>{user.name}</TableCell>
-                  <TableCell>{user.username}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>{user.contact}</TableCell>
-                  <TableCell>{user.address}</TableCell>
-                </TableRow>
-              ))}
+            {sortedUsers.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={6} align="center">
+                  No users yet
+                </TableCell>
+              </TableRow>
+            ) : (
+              sortedUsers
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((user) => (
+                  <TableRow key={user.id}>
+                    <TableCell>{user.id}</TableCell>
+                    <TableCell>{user.name}</TableCell>
+                    <TableCell>{user.username}</TableCell>
+                    <TableCell>{user.email}</TableCell>
+                    <TableCell>{user.contact}</TableCell>
+                    <TableCell>{user.address}</TableCell>
+                  </TableRow>
+                ))
+            )}
             {emptyRows > 0 && (
               <TableRow style={{ height: 53 * emptyRows }}>
                 <TableCell colSpan={6} />

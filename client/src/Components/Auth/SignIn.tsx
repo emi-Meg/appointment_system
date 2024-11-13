@@ -4,7 +4,7 @@ import Lottie from "lottie-react";
 import signup from "../../Assets/Lottie/register_lottie.json";
 import { ThemeProvider } from "@emotion/react";
 import { muiThemeContext } from "../../Contexts/Themes/MUIThemeContext";
-import { Box, TextField } from "@mui/material";
+import { Box, FormLabel, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const SignIn: React.FC = () => {
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const SignIn: React.FC = () => {
     setIsSubmitting(true);
 
     const formData = new FormData();
-    formData.append("username", username);
+    formData.append("email", email);
     formData.append("password", password);
 
     try {
@@ -116,23 +116,25 @@ const SignIn: React.FC = () => {
           <div className="sign-in-form">
             <ThemeProvider theme={muiThemeContext}>
               <Box className="box-form">
+              <FormLabel htmlFor="email" sx={{ fontWeight: '700'}}>Email</FormLabel>
                 <TextField
                   size="small"
-                  id="usernameEmail"
-                  label="Username or Email"
+                  id="email"
+                  placeholder="Enter your email..."
                   variant="outlined"
-                  value={username}
+                  value={email}
                   onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setUsername(event.target.value)
+                    setEmail(event.target.value)
                   }
                   sx={{ marginBottom: "10px", width: "100%" }}
                   required
                 />
+                <FormLabel htmlFor="password" sx={{ fontWeight: '700'}}>Password</FormLabel>
                 <TextField
                   type="password"
                   size="small"
                   id="password"
-                  label="Password"
+                  placeholder="Enter your password..."
                   variant="outlined"
                   value={password}
                   onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -143,12 +145,12 @@ const SignIn: React.FC = () => {
                 />
               </Box>
             </ThemeProvider>
-            <Link to="#">
+            <Link to="/forgot-password">
               <p>Forgot Password?</p>
             </Link>
           </div>
           <div className="sign-in-btn">
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit" disabled={isSubmitting} className="active:scale-95 font-semibold">
               {isSubmitting ? (
                 <>
                   <FontAwesomeIcon icon={faSpinner} spin /> Signing in...

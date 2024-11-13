@@ -16,6 +16,10 @@ import {
   Step,
   StepLabel,
   Stepper,
+  Table,
+  TableCell,
+  TableContainer,
+  TableRow,
   TextField,
   Typography,
 } from "@mui/material";
@@ -200,7 +204,7 @@ const AdminAddBookingModal: React.FC<MyAdminAddBookingDialogProps> = ({
           sx={{
             m: 0,
             p: 2,
-            bgcolor: "#FFD700"
+            bgcolor: "#FFD700",
           }}
           id="dialog-view"
         >
@@ -236,63 +240,278 @@ const AdminAddBookingModal: React.FC<MyAdminAddBookingDialogProps> = ({
                     Just a quick check, please review your details to finalize
                     your appointment!
                   </Typography>
-                  <Box>
-                    <p>
-                      <strong>Branch: </strong>
-                      {branch}
-                    </p>
-                    <p>
-                      <strong>Vehicle Type: </strong>
-                      {vehicleType}
-                    </p>
-                    <p>
-                      <strong>Service Request: </strong>
-                      {serviceRequest}
-                    </p>
-                    <p>
-                      <strong>Choose Your Mechanic: </strong>
-                      {mechanic}
-                    </p>
-                    <p>
-                      <strong>Registered Conduction/Plate No.: </strong>
-                      {plateNumber}
-                    </p>
-                    <p>
-                      <strong>Current Mileage: </strong>
-                      {currentMileage ? currentMileage : "N/A"}
-                    </p>
-                    <p>
-                      <strong>Other Request: </strong>
-                      {otherRequest ? otherRequest : "N/A"}
-                    </p>
-                    <p>
-                      <strong>Appointment Date and Time: </strong>
-                      {selectedDate ? selectedDate.toLocaleDateString() : ""}-
-                      {selectedTime ? selectedTime.toLocaleTimeString() : ""}
-                    </p>
-                    <p>
-                      <strong>Name: </strong>
-                      {name}
-                    </p>
-                    <p>
-                      <strong>Email: </strong>
-                      {email}
-                    </p>
-                    <p>
-                      <strong>Contact Number: </strong>
-                      {contact}
-                    </p>
-                    <p>
-                      <strong>Address: </strong>
-                      {address ? address : "N/A"}
-                    </p>
+                  <Box marginTop={2} marginBottom={2}>
+                    <TableContainer sx={{ width: "100%" }}>
+                      <Table>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>Branch</Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {branch}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Vehicle Type
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {vehicleType}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Service Request
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {serviceRequest}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>Mechanic</Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {mechanic}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Registered Conduction/Plate No.
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {plateNumber}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Current Mileage
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {currentMileage ? currentMileage : "N/A"}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Other Request
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {otherRequest ? otherRequest : "N/A"}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Appointment Date and Time
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {selectedDate
+                              ? selectedDate.toLocaleDateString()
+                              : ""}
+                            -
+                            {selectedTime
+                              ? selectedTime.toLocaleTimeString()
+                              : ""}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Name
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {name}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Email
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {email}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Contact Number
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {contact}
+                          </TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            <Typography fontWeight={700}>
+                              Address
+                            </Typography>
+                          </TableCell>
+                          <TableCell
+                            sx={{
+                              border: "1px solid #333333",
+                              paddingY: "2px",
+                            }}
+                          >
+                            {address? address : 'N/A'}
+                          </TableCell>
+                        </TableRow>
+                      </Table>
+                    </TableContainer>
                     <FormControlLabel
                       required
                       control={<Checkbox />}
                       label="I confirm that the details I provided are accurate."
+                      sx={{
+                        marginTop: "10px",
+                      }}
                     />
                   </Box>
-                  <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      pt: 1,
+                      pb: 2,
+                    }}
+                  >
+                    <Button
+                      color="inherit"
+                      disabled={activeStep === 0}
+                      onClick={handleBack}
+                      sx={{ mr: 1 }}
+                    >
+                      Back
+                    </Button>
                     <Box sx={{ flex: "1 1 auto" }} />
                     <Button onClick={handleReset}>Reset</Button>
                   </Box>

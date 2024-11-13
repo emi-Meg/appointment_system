@@ -29,7 +29,7 @@ const FrequentlyAskedQuestions: React.FC = () => {
         <Grid2 container spacing={2}>
           <Grid2 size={2} />
           <Grid2 size={8}>
-            <div className="flex flex-col mt-40">
+            <div className="flex flex-col mt-10">
               <div className="flex items-center">
                 <Breadcrumbs separator="›" aria-label="breadcrumb">
                   {breadcrumbs}
