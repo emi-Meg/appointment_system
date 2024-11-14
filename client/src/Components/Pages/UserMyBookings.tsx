@@ -137,22 +137,40 @@ const MyBookings: React.FC = () => {
                               {booking.date} - {booking.time}
                             </TableCell>
                             <TableCell align="center">
-                              <Link to={`/user/viewbooking/${booking.id}`}>
-                                <button className="bg-[#007BFF] text-white px-2 py-1 rounded-3xl">
-                                  View
-                                </button>
-                              </Link>{" "}
-                              <Link to={`/user/editbooking/${booking.id}`}>
-                                <button className="bg-[#FFC107] text-white px-2 py-1 rounded-3xl">
-                                  Edit
-                                </button>
-                              </Link>{" "}
-                              <button
-                                className="bg-[#DC3545] text-white px-2 py-1 rounded-3xl"
-                                onClick={() => handleClickOpen(booking.id)}
-                              >
-                                Cancel
-                              </button>
+                              {booking.status === "Approved" ? (
+                                <>
+                                  <Link to={`/user/viewbooking/${booking.id}`}>
+                                    <button className="bg-[#007BFF] text-white px-2 py-1 rounded-3xl">
+                                      View
+                                    </button>
+                                  </Link>{" "}
+                                  <button
+                                    className="bg-[#228B22] text-white px-2 py-1 rounded-3xl"
+                                    disabled
+                                  >
+                                    Approved
+                                  </button>
+                                </>
+                              ) : booking.status === "Pending" ? (
+                                <>
+                                  <Link to={`/user/viewbooking/${booking.id}`}>
+                                    <button className="bg-[#007BFF] text-white px-2 py-1 rounded-3xl">
+                                      View
+                                    </button>
+                                  </Link>{" "}
+                                  <Link to={`/user/editbooking/${booking.id}`}>
+                                    <button className="bg-[#FFC107] text-white px-2 py-1 rounded-3xl">
+                                      Edit
+                                    </button>
+                                  </Link>{" "}
+                                  <button
+                                    className="bg-[#DC3545] text-white px-2 py-1 rounded-3xl"
+                                    onClick={() => handleClickOpen(booking.id)}
+                                  >
+                                    Cancel
+                                  </button>
+                                </>
+                              ) : null}
                             </TableCell>
                           </TableRow>
                         ))

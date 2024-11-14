@@ -261,7 +261,7 @@ const LayoutAdmin: React.FC = () => {
           </div>
         )}
         <div className="flex flex-col w-full h-full">
-          <div className="bg-[#F5F5F5] w-full flex items-center justify-between pl-3 pr-6 py-3 shadow-lg">
+          <div className="bg-[#F5F5F5] w-full flex items-center justify-between gap-2 md:gap-0 pl-3 pr-6 py-3 shadow-lg">
             <div>
               <button onClick={toggleSidebar}>
                 {openSidebar ? (
