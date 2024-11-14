@@ -11,7 +11,7 @@ import React from "react";
 
 const LoginAdmin: React.FC = () => {
   return (
-    <div className="flex items-center justify-center h-screen overflow-y-auto mx-5 md:mx-0 my-2">
+    <div className="flex items-start md:items-center justify-center h-screen overflow-y-auto px-5 md:px-0 py-10 md:py-0">
       <Card
         sx={{
           padding: { xs: "30px 70px 30px 70px", md: "40px 80px 40px 80px" },
@@ -34,7 +34,10 @@ const LoginAdmin: React.FC = () => {
           Administrator Access
         </Typography>
         <FormControl fullWidth>
-          <label htmlFor="username-email" className="font-semibold text-sm md:text-base">
+          <label
+            htmlFor="username-email"
+            className="font-semibold text-sm md:text-base"
+          >
             Username or Email
           </label>
           <TextField
@@ -46,14 +49,17 @@ const LoginAdmin: React.FC = () => {
             sx={{
               marginBottom: "10px",
               "& .MuiInputBase-input": {
-                fontSize: {xs:"14px", md:"16px"},
+                fontSize: { xs: "14px", md: "16px" },
               },
               "& .MuiInputBase-input::placeholder": {
-                fontSize: {xs: "10px", md: "14px"},
+                fontSize: { xs: "10px", md: "14px" },
               },
             }}
           />
-          <label htmlFor="password" className="font-semibold text-sm md:text-base">
+          <label
+            htmlFor="password"
+            className="font-semibold text-sm md:text-base"
+          >
             Password
           </label>
           <TextField
@@ -64,10 +70,10 @@ const LoginAdmin: React.FC = () => {
             fullWidth
             sx={{
               "& .MuiInputBase-input": {
-                fontSize: {xs:"14px", md:"16px"},
+                fontSize: { xs: "14px", md: "16px" },
               },
               "& .MuiInputBase-input::placeholder": {
-                fontSize: {xs: "10px", md: "14px"},
+                fontSize: { xs: "10px", md: "14px" },
               },
             }}
           />
@@ -80,7 +86,10 @@ const LoginAdmin: React.FC = () => {
         </FormControl>
         <Button
           variant="contained"
-          sx={{ backgroundColor: "#FF6600", fontSize: { xs: "14px", md: "16px" } }}
+          sx={{
+            backgroundColor: "#FF6600",
+            fontSize: { xs: "14px", md: "16px" },
+          }}
         >
           LOGIN
         </Button>

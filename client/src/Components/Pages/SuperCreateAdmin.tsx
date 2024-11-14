@@ -104,8 +104,8 @@ const SuperCreateAdmin: React.FC = () => {
 
   return (
     <div className="w-full lg:px-96">
-      <div className="pb-20 shadow-lg border-2 border-[#EBEBE4] rounded-xl">
-        <div className="flex justify-end px-10 pt-5">
+      <div className="pb-10 md:pb-20 shadow-lg border-2 border-[#EBEBE4] rounded-xl">
+        <div className="flex justify-end px-5 pt-3 md:px-10 md:pt-5">
           <Link to='/dev/admins-list'>
           <button><FontAwesomeIcon icon={faXmark} size="lg" color="#333"/></button>
           </Link>
@@ -116,7 +116,7 @@ const SuperCreateAdmin: React.FC = () => {
         </h3>
       </div>
       <form onSubmit={handleCreateAdmin}>
-        <div className="w-full flex flex-col gap-2 items-center">
+        <div className="w-full flex flex-col gap-2 items-center px-5 md:px-0">
           <div className="space-y-2 w-full md:w-[500px]">
             <h4 className="text-base lg:text-xl font-medium">Personal Information</h4>
             <TextField

@@ -77,7 +77,6 @@ const SuperAdminsList: React.FC = () => {
       return (
         admin.lastName.toLowerCase().includes(searchLower) ||
         admin.firstName.toLowerCase().includes(searchLower) ||
-        admin.username.toLowerCase().includes(searchLower) ||
         admin.email.toLowerCase().includes(searchLower) ||
         admin.gender.toLowerCase().includes(searchLower) ||
         admin.branchName.toLowerCase().includes(searchLower) ||
@@ -128,7 +127,7 @@ const SuperAdminsList: React.FC = () => {
 
   return (
     <div>
-      <div className="mb-5 flex justify-between">
+      <div className="mb-5 flex items-center gap-2 md:gap-0 justify-between">
       {/* Search Input */}
       <FormControl
         sx={{ width: { xs: "100%", md: "25ch" }}}
@@ -152,7 +151,7 @@ const SuperAdminsList: React.FC = () => {
         />
       </FormControl>
       <Link to='/dev/create-admin'>
-      <button className="bg-[#FF6600] text-white active:scale-95 px-3 py-2 rounded-3xl font-semibold">Add Admin</button>
+      <button className="bg-[#FF6600] text-white active:scale-95 whitespace-nowrap py-1 px-2 md:px-3 md:py-2 rounded-3xl font-semibold">Add Admin</button>
       </Link>
       </div>
       <TableContainer>
@@ -162,7 +161,6 @@ const SuperAdminsList: React.FC = () => {
               {[
                 "lastName",
                 "firstName",
-                "username",
                 "email",
                 "gender",
                 "branchName",
@@ -205,7 +203,6 @@ const SuperAdminsList: React.FC = () => {
                   <TableRow key={admin.id}>
                     <TableCell>{admin.lastName}</TableCell>
                     <TableCell>{admin.firstName}</TableCell>
-                    <TableCell>{admin.username}</TableCell>
                     <TableCell>{admin.email}</TableCell>
                     <TableCell>{admin.gender}</TableCell>
                     <TableCell>{admin.branchName}</TableCell>

@@ -22,10 +22,12 @@ import { Link as RouterLink, Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import smct from "../../Assets/Images/smct_group.png";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import TwitterIcon from "@mui/icons-material/X";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faFacebookMessenger, faSquareFacebook, faTiktok, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import shopee from '../../Assets/Svg/icons8-shopee.svg';
+import lazada from '../../Assets/Svg/icons8-lazada.svg';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
@@ -262,7 +264,7 @@ const UserLayout: React.FC = () => {
       <div>
         <Outlet />
       </div>
-      <div>
+      <div className="w-full">
         <Divider
           sx={{
             marginTop: "200px",
@@ -277,7 +279,7 @@ const UserLayout: React.FC = () => {
             alignItems: "center",
             gap: { xs: 4, sm: 8 },
             py: { xs: 5, sm: 6 },
-            textAlign: { sm: "center", md: "left" },
+            textAlign: { xs: "center", sm: "left" },
             px: { xs: 8, sm: 3, lg: 8 },
           }}
         >
@@ -362,6 +364,37 @@ const UserLayout: React.FC = () => {
                   </Button>
                 </Stack>
               </Box>
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "none", sm: "flex" },
+                flexDirection: "column",
+                gap: 1
+              }}>
+            <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <FontAwesomeIcon
+                    icon={faLocationDot}
+                    color="white"
+                  />
+                  <p className="text-white text-sm text-left">Alano Corner Jamisola St.,Pagadian City</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FontAwesomeIcon icon={faEnvelope} color="white" />
+                  <p className="text-white text-sm text-left">info@strongmotocentrum.com</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FontAwesomeIcon icon={faPhone} color="white" />
+                  <p className="text-white text-sm text-left">(+63) 970 192 9564</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FontAwesomeIcon
+                    icon={faFacebookMessenger}
+                    color="white"
+                  />
+                  <p className="text-white text-sm text-left">Strong Moto Centrum Chat</p>
+                </div>
+              </div>
             </Box>
             <Box
               sx={{
@@ -501,9 +534,9 @@ const UserLayout: React.FC = () => {
             flexDirection: "column",
             alignItems: "center",
             gap: { xs: 4, sm: 8 },
-            py: { xs: 8, sm: 10 },
+            py: { xs: 5, sm: 10 },
             textAlign: { sm: "center", md: "left" },
-            px: "100px",
+            px: {xs: 3},
           }}
         >
           <Box
@@ -533,6 +566,9 @@ const UserLayout: React.FC = () => {
               </MUILink>
               <Copyright />
             </div>
+            <div className="flex flex-col md:flex-row justify-center items-center md:items-start lg:space-x-10">
+            <div className="flex flex-col items-center">
+              <p className="text-xs font-thin">Social Accounts</p>
             <Stack
               direction="row"
               spacing={1}
@@ -548,18 +584,18 @@ const UserLayout: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FacebookIcon />
+                <FontAwesomeIcon icon={faSquareFacebook} size="lg"/>
               </IconButton>
               <IconButton
                 color="inherit"
                 size="small"
-                href="https://x.com/MaterialUI"
+                href="https://www.youtube.com/@strongmotocentrum"
                 aria-label="X"
                 sx={{ alignSelf: "center" }}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <TwitterIcon />
+                <FontAwesomeIcon icon={faYoutube} size="lg"/>
               </IconButton>
               <IconButton
                 color="inherit"
@@ -570,9 +606,43 @@ const UserLayout: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkedInIcon />
+                <FontAwesomeIcon icon={faTiktok} size="lg"/>
               </IconButton>
             </Stack>
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="text-xs font-thin">Shop Accounts</p>
+            <Stack
+              direction="row"
+              spacing={1}
+              useFlexGap
+              sx={{ justifyContent: "left", color: "text.secondary" }}
+            >
+              <IconButton
+                color="inherit"
+                size="small"
+                href="https://shopee.ph/shop/1069644030"
+                aria-label="Facebook"
+                sx={{ alignSelf: "center" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={shopee} alt="Shopee" />
+              </IconButton>
+              <IconButton
+                color="inherit"
+                size="small"
+                href="https://lazada.com.ph/shop/strong-motorcyle-parts-supply"
+                aria-label="X"
+                sx={{ alignSelf: "center" }}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={lazada} alt="Lazada" />
+              </IconButton>
+            </Stack>
+            </div>
+            </div>
           </Box>
         </Box>
       </div>

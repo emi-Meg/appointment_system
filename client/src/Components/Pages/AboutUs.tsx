@@ -6,7 +6,7 @@ import values from "../../Assets/Images/values.png";
 
 const AboutUs: React.FC = () => {
   return (
-    <div className="w-full p-20">
+    <div className="w-full px-96 py-20">
       <div className="flex w-full justify-between gap-20 mb-20">
         <div className="flex flex-col justify-center w-full text-justify space-y-10">
           <h3 className="text-3xl font-semibold">About Us</h3>
@@ -32,10 +32,10 @@ const AboutUs: React.FC = () => {
         <img src={building} alt="HO Building" className="w-1/2" />
       </div>
       <div className="flex w-full justify-between gap-20">
-        <img src={vision} alt="Vision" />
-        <div className="flex flex-col justify-center w-full text-justify space-y-10">
+        <img src={vision} alt="Vision" className="w-72" />
+        <div className="flex flex-col justify-center w-full text-left space-y-10">
           <h3 className="text-3xl font-semibold">Our Vision</h3>
-          <p className="w-2/4 text-xl">
+          <p className="w-2/4 text-lg">
             To become the leader in the Philippine vehicle and appliance
             industry. We believe in improving the quality of life of Filipinos
             both inside and outside their homes.
@@ -45,11 +45,11 @@ const AboutUs: React.FC = () => {
       <div className="flex w-full">
         <div className="flex flex-col justify-center items-end w-full text-end space-y-10">
           <h3 className="text-3xl font-semibold">Our Mission</h3>
-          <p className="text-xl w-2/4">
+          <p className="text-lg w-2/4">
           We offer quality technology and excellent services that are affordable and accessible to all Filipinos. 
           </p>
         </div>
-        <img src={mission} alt="Mission" />
+        <img src={mission} alt="Mission" className="w-72" />
       </div>
       <div className="flex flex-col items-center w-full">
         <div className="flex items-center justify-center w-full bg-[#E0F7FA] mb-5">

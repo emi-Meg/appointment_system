@@ -90,7 +90,7 @@ const AdminModifyServices: React.FC = () => {
             </Button>
           </div>
         </div>
-        <div className="mt-8 px-10 py-12 bg-[#f5f5f5]">
+        <div className="mt-8 px-10 py-2 md:py-12 bg-[#f5f5f5]">
           <Grid2 display="flex" justifyContent="center" container spacing={2}>
             {services.map((service, serviceIndex) => (
               <Card key={serviceIndex} sx={{ minWidth: 275, mb: 2 }}>
